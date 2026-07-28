@@ -1,4 +1,4 @@
-# wildfire-power-api
+# api
 This project includes an API that gives fire information and an API that gives power outage information.
 
 The fire information API inputs your location (in latitude and longitude coordinates or your city and state), a radius in miles, and a time x in seconds. It searches for wildfires within the radius of your location every x seconds and for each wildfire outputs the fire name, the distance from your location in miles, the acres burned, the containment as a percentage, and the county the fire is in.
