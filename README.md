@@ -1,8 +1,37 @@
-# APIs
-This project includes an API that gives fire information and an API that gives power outage information.
+# Overview
+A Python script that checks for active wildfires through NIFC WFIGS and active power outages through Cal OES near a location, and prints a report.
 
-The fire information API inputs your location (in latitude and longitude coordinates or your city and state), a radius in miles, and a time x in seconds. It searches for wildfires within the radius of your location every x seconds and for each wildfire outputs the fire name, the distance from your location in miles, the acres burned, the containment as a percentage, and the county the fire is in.
+# Features
 
-The power outage API inputs your location (in latitude and longitude coordinates or your city and state), a radius in miles, and a time x in seconds. It searches for power outages within the radius of your location every x seconds and for each power outage outputs the electric company provider name that is experiencing an outage, the distance from your location in miles, the start date and time, the estimated restoration date and time, the county the outage is in, whether or not the outage was planned, the cause of the outage, and the number of customers impacted.
+  - Pulls current wildfire incidents from the National Interagency Fire Center (NIFC) feed, excluding prescribed burns
+  - Pulls active power outage data from Cal OES (PG&E, SCE, SDG&E, SMUD, LADWP), including planned and unplanned outages
+  - Geocodes any address or place name via OpenStreetMap Nominatim, or accepts latitude and longitude coordinates
+  - Checks within a chosen mileage of your location
+  - Can repeat on a chosen interval
+  - Prints a list to the terminal
 
-The fire power information API combines these two APIs, combining the outputs and the inputs (without overlap).
+# Requirements
+
+  - Python 3.8+
+  - requests module
+
+# Usage
+
+You can choose settings for the code to use:
+  - MY_ADDRESS = "XYZ"
+  - MY_RADIUS_MILES = 100
+  - MY_INTERVAL_SECONDS = 300
+
+Then just run it!
+
+# Data Sources
+
+  - Wildfires: NIFC WFIGS Incident Locations
+  - Power outages: Cal OES Power Outages
+  - Geocoding: OpenStreetMap Nominatim
+
+# Limitations
+
+  - Power outage information only covers California
+  - Fire information only covers USA
+  - Nominatim's usage policy limits request frequency, so avoid setting very small intervals
